@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DUVAL TOMOVA CAR LOGISTICS</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+<header class="header">
+    <div class="brand">
+        <span class="brand-icon">🚘</span>
+        <div>
+            <h1>DUVAL TOMOVA CAR</h1>
+            <p>LOGISTICS & DELIVERY</p>
+        </div>
+    </div>
+
+<div class="header-actions">
+    <label for="language-select" class="language-label">🌐</label>
+    <select id="language-select" aria-label="Choisir la langue">
+        <option value="fr">🇫🇷 Français</option>
+        <option value="es">🇪🇸 Español</option>
+        <option value="de">🇩🇪 Deutsch</option>
+        <option value="en">🇬🇧 English</option>
+    </select>
+    <span class="header-label" data-i18n="headerLabel">SUIVI DE LIVRAISON</span>
+</div>
+
+</header>
+
+<main>
+    
+<section class="hero">
+    
+<div class="hero-content">
+    <span class="eyebrow">DUVAL TOMOVA CAR · LOGISTICS & DELIVERY</span>
+
+    <h2>
+        <span data-i18n="headerLabel">SUIVI DE LIVRAISON</span>
+        <span data-i18n="heroTitle">Votre véhicule, en toute sérénité.</span>
+    </h2>
+
+    <p class="hero-intro" data-i18n="heroSubtitle">
+        Suivez votre voiture jusqu'à votre domicile.
+    </p>
+
+    <p data-i18n="heroDescription">
+        Consultez les étapes de livraison de votre véhicule depuis l'Allemagne jusqu'à votre destination.
+    </p>
+</div>
+   
+<form id="tracking-form" class="tracking-form">
+    <div class="tracking-fields">
+        <div class="tracking-field">
+            <label for="tracking-number" data-i18n="trackingLabel">Numéro de suivi</label>
+            <input
+                id="tracking-number"
+                type="text"
+                placeholder="Ex. DTC-2026-001"
+                data-i18n-placeholder="trackingPlaceholder"
+                autocomplete="off"
+                required
+            >
+        </div>
+
+        <div class="tracking-field">
+            <label for="access-code" data-i18n="accessLabel">Votre code secret personnel</label>
+            <input
+                id="access-code"
+                type="password"
+                placeholder="Saisissez votre code secret"
+                data-i18n-placeholder="accessPlaceholder"
+                autocomplete="off"
+                minlength="6"
+                maxlength="128"
+                required
+            >
+        </div>
+
+        <button type="submit" data-i18n="trackingButton">Suivre ma voiture →</button>
+    </div>
+
+    <small data-i18n="trackingHelp">
+        🔒 Utilisez le numéro de suivi et le code secret communiqués par notre équipe.
+    </small>
+</form>
+
+    <div id="tracking-result" class="tracking-result"
+         aria-live="polite" hidden>
+        <h3 data-i18n="trackingResultTitle">Suivi de votre livraison</h3>
+
+        <p id="tracking-message"></p>
+
+<div class="delivery-progress">
+    <div class="progress-step" data-status="Commande reçue">
+        <span class="progress-dot">1</span>
+        <span class="progress-label" data-status-index="0">Commande reçue</span>
+    </div>
+
+    <div class="progress-step" data-status="Véhicule préparé">
+        <span class="progress-dot">2</span>
+        <span class="progress-label" data-status-index="1">Véhicule préparé</span>
+    </div>
+
+    <div class="progress-step" data-status="En transit">
+        <span class="progress-dot">3</span>
+        <span class="progress-label" data-status-index="2">En transit</span>
+    </div>
+
+    <div class="progress-step" data-status="Arrivé en Espagne">
+        <span class="progress-dot">4</span>
+        <span class="progress-label" data-status-index="3">Arrivé en Espagne</span>
+    </div>
+
+    <div class="progress-step" data-status="En livraison">
+        <span class="progress-dot">5</span>
+        <span class="progress-label" data-status-index="4">En livraison</span>
+    </div>
+
+    <div class="progress-step" data-status="Livré">
+        <span class="progress-dot">6</span>
+        <span class="progress-label" data-status-index="5">Livré</span>
+    </div>
+</div>
+<div class="delivery-map">
+    <h3 data-i18n="mapTitle">Localisation de votre livraison</h3>
+    <div id="delivery-map"></div>
+</div>
+        <div class="delivery-history">
+            <h3 data-i18n="historyTitle">Historique de votre livraison</h3>
+            <div id="tracking-history">
+            <p data-i18n="historyIntro">Les étapes de votre livraison apparaîtront ici.</p>
+            </div>
+        </div>
+    </div>
+</section>
+    
+<section class="steps-section">
+    <div class="section-heading">
+        <span class="eyebrow" data-i18n="stepsEyebrow">UN SUIVI EN PLUSIEURS ÉTAPES</span>
+        <h2 data-i18n="stepsTitle">De l'Allemagne à votre porte</h2>
+        <p data-i18n="stepsIntro">Les différentes étapes de votre livraison.</p>
+    </div>
+
+    <div class="steps">
+        <article class="step">
+            <span class="step-icon">✓</span>
+            <h3 data-i18n="stepConfirmed">Commande confirmée</h3>
+            <p data-i18n="stepConfirmedText">Votre réservation est enregistrée.</p>
+        </article>
+
+        <article class="step">
+            <span class="step-icon">🚘</span>
+            <h3 data-i18n="stepPreparation">Préparation</h3>
+            <p data-i18n="stepPreparationText">Le véhicule est préparé en Allemagne.</p>
+        </article>
+
+        <article class="step">
+            <span class="step-icon">🚚</span>
+            <h3 data-i18n="stepTransport">Transport</h3>
+            <p data-i18n="stepTransportText">Le véhicule est en cours d'acheminement.</p>
+        </article>
+
+        <article class="step">
+            <span class="step-icon">📍</span>
+            <h3 data-i18n="stepDelivery">Livraison</h3>
+            <p data-i18n="stepDeliveryText">Votre véhicule arrive à destination.</p>
+        </article>
+    </div>
+</section>
+
+<section class="help">
+    <h2 data-i18n="contactTitle">Besoin d'aide concernant votre livraison ?</h2>
+
+    <p data-i18n="contactDescription">
+        Contactez notre équipe pour obtenir des informations sur votre commande.
+    </p>
+
+    <a href="https://wa.me/34682879855"
+       target="_blank"
+       rel="noopener noreferrer"
+       data-i18n="contactButton">
+        Contacter DUVAL TOMOVA CAR sur WhatsApp
+    </a>
+</section>
+</main>
+
+<footer>
+    <p>© <span id="year"></span> DUVAL TOMOVA CAR LOGISTICS</p>
+    <p data-i18n="footerDescription">Un accompagnement de l'Allemagne jusqu'à votre domicile.</p>
+</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

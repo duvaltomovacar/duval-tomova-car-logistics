@@ -1,0 +1,366 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administration - DUVAL TOMOVA CAR LOGISTICS</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 25px;
+            font-family: Arial, sans-serif;
+            background: #f1f4f9;
+            color: #172033;
+        }
+
+        .container {
+            max-width: 750px;
+            margin: 35px auto;
+        }
+
+        header {
+            background: #0b3d91;
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 22px;
+        }
+
+        header h1 {
+            margin: 0 0 8px;
+            font-size: 24px;
+        }
+
+        .panel {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            box-shadow: 0 3px 15px #0000000c;
+        }
+
+        h2 {
+            margin-top: 0;
+            color: #0b3d91;
+        }
+
+        label {
+            display: block;
+            margin: 15px 0 7px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccd3df;
+            border-radius: 6px;
+            font-size: 15px;
+        }
+
+        button {
+            margin-top: 18px;
+            padding: 13px 18px;
+            border: none;
+            border-radius: 6px;
+            background: #0b3d91;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #082e6b;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #message {
+            margin-top: 15px;
+            overflow-wrap: anywhere;
+            line-height: 1.5;
+        }
+
+        .note {
+            color: #586174;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <header>
+        <h1>DUVAL TOMOVA CAR LOGISTICS</h1>
+        <p>Gestion sécurisée des livraisons automobiles</p>
+    </header>
+
+    <section class="panel" id="loginPanel">
+        <h2>Connexion administrateur</h2>
+
+        <form id="loginForm">
+            <label for="email">Adresse e-mail</label>
+            <input id="email" type="email" required
+                   autocomplete="username">
+
+            <label for="password">Mot de passe</label>
+            <input id="password" type="password" required
+                   autocomplete="current-password">
+
+            <button type="submit">Se connecter</button>
+        </form>
+    </section>
+
+    <section class="panel hidden" id="adminPanel">
+        <h2>Créer une livraison</h2>
+
+        <p class="note">
+            Attribue à chaque client un numéro de suivi unique
+            et un code secret personnel d'au moins 8 caractères.
+        </p>
+
+        <form id="deliveryForm">
+            <label for="tracking">Numéro de suivi</label>
+            <input id="tracking" required
+                   placeholder="Ex. DTC-2026-001">
+
+            <label for="accessCode">Code secret du client</label>
+            <input id="accessCode" type="password" required
+                   minlength="8" maxlength="128"
+                   autocomplete="new-password">
+
+            <label for="customer">Nom du client</label>
+            <input id="customer" required>
+
+            <label for="customerEmail">E-mail du client (facultatif)</label>
+            <input id="customerEmail" type="email">
+
+            <label for="vehicle">Véhicule</label>
+            <input id="vehicle" required
+                   placeholder="Ex. BMW X1 2021">
+
+            <label for="destination">Destination</label>
+            <input id="destination" required
+                   placeholder="Ex. Madrid, Espagne">
+
+            <label for="deliveryDate">Date estimée de livraison</label>
+            <input id="deliveryDate" type="date">
+
+            <button type="submit">Créer le dossier de livraison</button>
+        </form>
+
+<hr>
+
+<h2>Mettre à jour le suivi d’une livraison</h2>
+
+<form id="statusForm">
+    <label for="statusTracking">Numéro de suivi du client</label>
+    <input
+        id="statusTracking"
+        required
+        placeholder="Ex. DTC-2026-001"
+    >
+
+    <label for="newStatus">Nouveau statut</label>
+    <select id="newStatus" required>
+        <option value="Commande reçue">Commande reçue</option>
+        <option value="Véhicule préparé">Véhicule préparé</option>
+        <option value="En transit">En transit</option>
+        <option value="Arrivé en Espagne">Arrivé en Espagne</option>
+        <option value="En livraison">En livraison</option>
+        <option value="Livré">Livré</option>
+    </select>
+
+    <label for="statusLocation">Lieu actuel (facultatif)</label>
+    <input
+        id="statusLocation"
+        placeholder="Ex. Frontière espagnole"
+    >
+
+    <label for="statusDetails">Message pour le client (facultatif)</label>
+    <input
+        id="statusDetails"
+        placeholder="Ex. Votre véhicule poursuit son trajet"
+    >
+
+    <button type="submit">Mettre à jour le suivi</button>
+</form>
+
+        <button id="logoutButton" type="button">
+            Se déconnecter
+        </button>
+    </section>
+
+    <section class="panel">
+        <p id="message" role="status" aria-live="polite">
+            Espace de gestion des livraisons.
+        </p>
+    </section>
+
+</div>
+
+<script type="module">
+    import { createClient }
+        from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
+
+    const SUPABASE_URL =
+        "https://nplyzgwpppbbpawtbvxq.supabase.co";
+
+    const SUPABASE_PUBLISHABLE_KEY =
+        "sb_publishable_rVDLaAx3Yx8iNO3OOyFmug_3_3Vg3sE";
+
+    const supabase = createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+
+    const loginPanel = document.getElementById("loginPanel");
+    const adminPanel = document.getElementById("adminPanel");
+    const message = document.getElementById("message");
+
+    function showMessage(text) {
+        message.textContent = text;
+    }
+
+    function showSession(isLoggedIn) {
+        loginPanel.classList.toggle("hidden", isLoggedIn);
+        adminPanel.classList.toggle("hidden", !isLoggedIn);
+    }
+
+    async function refreshSession() {
+        const { data } = await supabase.auth.getSession();
+        showSession(Boolean(data.session));
+    }
+
+    document.getElementById("loginForm").addEventListener(
+        "submit", async (event) => {
+            event.preventDefault();
+            showMessage("Connexion en cours...");
+
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+
+            const { error } = await supabase.auth.signInWithPassword({
+                email,
+                password
+            });
+
+            if (error) {
+                showMessage("Connexion impossible. Vérifie ton e-mail et ton mot de passe.");
+                return;
+            }
+
+            showSession(true);
+            showMessage("Connexion réussie.");
+        }
+    );
+
+    document.getElementById("deliveryForm").addEventListener(
+        "submit", async (event) => {
+            event.preventDefault();
+            showMessage("Création du dossier en cours...");
+
+            const body = {
+                tracking_number:
+                    document.getElementById("tracking").value.trim(),
+                access_code:
+                    document.getElementById("accessCode").value,
+                customer_name:
+                    document.getElementById("customer").value.trim(),
+                customer_email:
+                    document.getElementById("customerEmail").value.trim(),
+                vehicle:
+                    document.getElementById("vehicle").value.trim(),
+                destination:
+                    document.getElementById("destination").value.trim(),
+                estimated_delivery:
+                    document.getElementById("deliveryDate").value || null
+            };
+
+            const { data, error } = await supabase.functions.invoke(
+                "create-delivery",
+                { body }
+            );
+
+            if (error) {
+                showMessage(
+                    "Création impossible. Vérifie la connexion et les paramètres de la fonction, puis réessaie."
+                );
+                console.error("Erreur de création :", error);
+                return;
+            }
+
+            if (data?.error) {
+                showMessage(data.error);
+                return;
+            }
+
+            showMessage(
+                "Livraison créée. Numéro de suivi : " +
+                data.delivery.tracking_number
+            );
+
+            document.getElementById("deliveryForm").reset();
+        }
+    );
+
+    
+document.getElementById("statusForm").addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const tracking_number = document.getElementById("statusTracking").value.trim();
+    const status = document.getElementById("newStatus").value;
+    const location = document.getElementById("statusLocation").value.trim();
+    const details = document.getElementById("statusDetails").value.trim();
+
+    const { data, error } = await supabase.functions.invoke(
+        "update-delivery-status",
+        {
+            body: {
+                tracking_number,
+                status,
+                location,
+                details
+            }
+        }
+    );
+
+    if (error) {
+        showMessage("Erreur : " + error.message);
+        return;
+    }
+
+    if (data?.error) {
+        showMessage("Erreur : " + data.error);
+        return;
+    }
+
+    showMessage("Suivi mis à jour : " + status);
+});
+
+    document.getElementById("logoutButton").addEventListener(
+        "click", async () => {
+            await supabase.auth.signOut();
+            showSession(false);
+            showMessage("Tu es déconnecté.");
+        }
+    );
+
+    supabase.auth.onAuthStateChange((_event, session) => {
+        showSession(Boolean(session));
+    });
+
+    refreshSession();
+</script>
+</body>
+</html>

@@ -1,0 +1,1688 @@
+
+:root {
+    --blue: #0b3d91;
+    --blue-dark: #061b3d;
+    --blue-light: #eaf2ff;
+    --gold: #c8a45d;
+    --light: #f4f7fc;
+    --text: #17243b;
+    --muted: #66758c;
+    --white: #ffffff;
+    --border: #dce6f4;
+    --shadow: 0 12px 35px rgba(8, 43, 101, 0.08);
+    --radius: 18px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background: #ffffff;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button,
+a,
+input {
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+    transition: background 0.2s ease, color 0.2s ease,
+        transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+    outline: 3px solid #83b4ff;
+    outline-offset: 3px;
+}
+
+/* EN-TÊTE PREMIUM */
+
+.header {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 20px 7%;
+    background: linear-gradient(120deg, #061b3d, #0b3d91);
+    color: var(--white);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.brand-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    flex-shrink: 0;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.09);
+    font-size: 30px;
+}
+
+.brand h1 {
+    margin: 0;
+    color: var(--white);
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    line-height: 1.4;
+}
+
+.brand p {
+    margin: 3px 0 0;
+    color: #d6e4ff;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+}
+
+.header-label {
+    padding: 9px 15px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+/* SECTION HERO */
+
+.hero {
+    position: relative;
+    overflow: visible;
+    padding: 76px 7% 82px;
+    color: var(--white);
+    background:
+        radial-gradient(ellipse at 85% 15%, rgba(53, 111, 194, 0.4), transparent 38%),
+        linear-gradient(120deg, #061b3d 0%, #0b3d91 62%, #123f7d 100%);
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 7%;
+    width: 190px;
+    height: 4px;
+    background: linear-gradient(
+        to right,
+        #ffffff 0 33%,
+        #e04444 33% 66%,
+        #f2c14e 66% 100%
+    );
+    opacity: 0.9;
+}
+
+.eyebrow {
+    margin: 0;
+    color: #d4e3ff;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+}
+
+.hero h2 {
+    max-width: 800px;
+    margin: 18px 0;
+    color: var(--white);
+    font-size: clamp(32px, 4.5vw, 54px);
+    font-weight: 800;
+    line-height: 1.13;
+    letter-spacing: -1.2px;
+}
+
+.hero > p {
+    max-width: 620px;
+    color: #e1eaff;
+    font-size: 16px;
+    line-height: 1.9;
+}
+
+/* FORMULAIRE DE SUIVI */
+
+.tracking-form {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1080px;
+    margin: 38px auto 0;
+    padding: 30px;
+    color: var(--text);
+    background: var(--white);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: var(--radius);
+    box-shadow: 0 22px 55px rgba(0, 13, 39, 0.22);
+}
+
+.tracking-form label {
+    display: block;
+    margin-bottom: 9px;
+    color: #183764;
+    font-size: 13px;
+    font-weight: 750;
+}
+
+.search-row {
+    display: flex;
+    align-items: stretch;
+    gap: 12px;
+}
+
+.search-row input {
+    flex: 1 1 0;
+    width: 100%;
+    min-width: 0;
+    padding: 15px 17px;
+    color: var(--text);
+    background: #fbfcff;
+    border: 1px solid #cfdaeb;
+    border-radius: 10px;
+    font-size: 14px;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.search-row input::placeholder {
+    color: #8a98ad;
+}
+
+.search-row input:focus {
+    outline: none;
+    border-color: var(--blue);
+    box-shadow: 0 0 0 4px rgba(11, 61, 145, 0.1);
+}
+
+button {
+    padding: 15px 22px;
+    color: var(--white);
+    background: linear-gradient(135deg, #1254b9, #0b3d91);
+    border: 1px solid transparent;
+    border-radius: 10px;
+    box-shadow: 0 6px 16px rgba(11, 61, 145, 0.2);
+    font-size: 13px;
+    font-weight: 750;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(11, 61, 145, 0.25);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+.tracking-form small {
+    display: block;
+    margin-top: 14px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+/* RÉSULTAT DU SUIVI */
+
+.tracking-result {
+    width: 86%;
+    max-width: 1200px;
+    margin: 34px auto;
+    padding: 30px;
+    color: var(--text);
+    background: linear-gradient(145deg, #ffffff, #f7faff);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.tracking-result h3 {
+    margin: 0 0 18px;
+    color: var(--blue-dark);
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.4;
+}
+
+/* PROGRESSION DE LIVRAISON */
+
+.delivery-progress {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 35px;
+}
+
+.progress-step {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+    color: #7c8aa0;
+    text-align: center;
+}
+
+.progress-step:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    top: 18px;
+    left: calc(50% + 23px);
+    width: calc(100% - 38px);
+    height: 3px;
+    background: #dce5f2;
+    border-radius: 5px;
+}
+
+.progress-dot {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    color: #687991;
+    background: #edf2f9;
+    border: 3px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px #dce5f2;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+.progress-label {
+    max-width: 135px;
+    font-size: 12px;
+    font-weight: 650;
+    line-height: 1.5;
+}
+
+.progress-step.completed {
+    color: #176e49;
+}
+
+.progress-step.completed .progress-dot {
+    color: #ffffff;
+    background: #16834f;
+    box-shadow: 0 0 0 1px #16834f;
+}
+
+.progress-step.completed:not(:last-child)::after {
+    background: #16834f;
+}
+
+.progress-step.current {
+    color: var(--blue);
+}
+
+.progress-step.current .progress-dot {
+    color: #ffffff;
+    background: var(--blue);
+    box-shadow: 0 0 0 5px rgba(11, 61, 145, 0.12);
+}
+
+.progress-step.current .progress-label {
+    font-weight: 800;
+}
+
+/* HISTORIQUE DE LIVRAISON */
+
+.delivery-history {
+    margin-top: 34px;
+    padding: 24px;
+    color: var(--text);
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+}
+
+.delivery-history h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 20px;
+    color: var(--blue-dark);
+    font-size: 19px;
+}
+
+.history-item {
+    margin-bottom: 14px;
+    padding: 20px;
+    color: var(--text);
+    background: linear-gradient(135deg, #ffffff, #f5f8fd);
+    border: 1px solid #e0e9f6;
+    border-left: 4px solid var(--blue);
+    border-radius: 12px;
+    transition: box-shadow 0.2s ease;
+}
+
+.history-item:last-child {
+    margin-bottom: 0;
+}
+
+.history-item:hover {
+    box-shadow: 0 7px 20px rgba(8, 43, 101, 0.07);
+}
+
+.history-item h4 {
+    margin: 5px 0 8px;
+    color: var(--blue);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.history-item p {
+    margin: 6px 0;
+    color: #394b64;
+    font-size: 13px;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.history-item .history-date {
+    margin-bottom: 8px;
+    color: #748198;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* ÉTAPES DU SERVICE */
+
+.steps-section {
+    padding: 75px 7%;
+    background: var(--light);
+}
+
+.section-heading {
+    max-width: 700px;
+    margin: 0 auto 38px;
+    text-align: center;
+}
+
+.section-heading h2 {
+    margin: 10px 0;
+    color: var(--blue-dark);
+    font-size: clamp(26px, 3vw, 36px);
+    font-weight: 800;
+    line-height: 1.25;
+}
+
+.section-heading p {
+    margin: 10px 0 0;
+    color: var(--muted);
+    font-size: 15px;
+}
+
+.section-heading .eyebrow {
+    color: var(--blue);
+}
+
+.steps {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.step {
+    padding: 25px;
+    background: var(--white);
+    border: 1px solid #e4ebf5;
+    border-radius: 15px;
+    box-shadow: 0 5px 18px rgba(8, 43, 101, 0.035);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.step:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+}
+
+.step-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    color: var(--blue);
+    background: var(--blue-light);
+    border: 1px solid #d9e6ff;
+    border-radius: 14px;
+    font-size: 23px;
+}
+
+.step h3 {
+    margin: 17px 0 7px;
+    color: var(--blue-dark);
+    font-size: 16px;
+    font-weight: 800;
+}
+
+.step p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+/* ASSISTANCE WHATSAPP */
+
+.help {
+    margin: 0 7% 60px;
+    padding: 34px;
+    text-align: center;
+    background: linear-gradient(145deg, #ffffff, #f2f7ff);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.help h2 {
+    margin: 0 0 10px;
+    color: var(--blue-dark);
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.help p {
+    margin: 0 auto 12px;
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.help a {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 14px 23px;
+    color: #ffffff;
+    background: #07894e;
+    border: 1px solid #07894e;
+    border-radius: 10px;
+    box-shadow: 0 7px 18px rgba(7, 137, 78, 0.17);
+    font-size: 13px;
+    font-weight: 750;
+    text-decoration: none;
+}
+
+.help a:hover {
+    background: #067342;
+    box-shadow: 0 10px 24px rgba(7, 137, 78, 0.22);
+    transform: translateY(-2px);
+}
+
+/* PIED DE PAGE */
+
+footer {
+    padding: 30px 7%;
+    color: #dce7fb;
+    background: linear-gradient(120deg, #06152f, #082b65);
+    text-align: center;
+    font-size: 12px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: #ffffff;
+}
+
+/* ÉLÉMENTS MASQUÉS */
+
+[hidden] {
+    display: none !important;
+}
+
+/* TABLETTES */
+
+@media (max-width: 900px) {
+    .header {
+        padding: 18px 5%;
+    }
+
+    .hero {
+        padding: 60px 5% 75px;
+    }
+
+    .tracking-result {
+        width: 90%;
+        padding: 24px;
+    }
+
+    .steps-section {
+        padding: 60px 5%;
+    }
+
+    .steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .help {
+        margin-right: 5%;
+        margin-left: 5%;
+    }
+
+    .tracking-form {
+        padding: 24px;
+    }
+
+    .search-row {
+        flex-wrap: wrap;
+    }
+
+    .search-row input {
+        flex: 1 1 40%;
+    }
+
+    .search-row button {
+        flex: 1 1 100%;
+    }
+}
+
+/* TÉLÉPHONES */
+
+@media (max-width: 600px) {
+    body {
+        font-size: 14px;
+    }
+
+    .header {
+        align-items: flex-start;
+        padding: 16px 5%;
+    }
+
+    .brand {
+        gap: 10px;
+    }
+
+    .brand-icon {
+        width: 43px;
+        height: 43px;
+        border-radius: 12px;
+        font-size: 24px;
+    }
+
+    .brand h1 {
+        font-size: 15px;
+        letter-spacing: 0.5px;
+    }
+
+    .brand p {
+        font-size: 8px;
+        letter-spacing: 1.5px;
+    }
+
+    .header-label {
+        max-width: 105px;
+        padding: 7px 10px;
+        font-size: 9px;
+        letter-spacing: 0.5px;
+        text-align: center;
+    }
+
+    .hero {
+        padding: 46px 5% 65px;
+    }
+
+    .hero h2 {
+        font-size: clamp(30px, 8vw, 40px);
+        letter-spacing: -0.5px;
+    }
+
+    .hero > p {
+        font-size: 14px;
+    }
+
+    .tracking-form {
+        margin-top: 28px;
+        padding: 20px 16px;
+        border-radius: 14px;
+    }
+
+    .search-row {
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .search-row input,
+    .search-row button {
+        width: 100%;
+        min-height: 49px;
+        flex: auto;
+    }
+
+    .tracking-form small {
+        font-size: 11px;
+    }
+
+    .tracking-result {
+        width: 90%;
+        margin: 24px auto;
+        padding: 20px 16px;
+        border-radius: 14px;
+    }
+
+    .tracking-result h3 {
+        font-size: 19px;
+    }
+
+    .delivery-progress {
+        grid-template-columns: 1fr;
+        gap: 0;
+        margin-top: 25px;
+    }
+
+    .progress-step {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 13px;
+        min-height: 58px;
+        text-align: left;
+    }
+
+    .progress-step:not(:last-child)::after {
+        top: 39px;
+        left: 18px;
+        width: 3px;
+        height: 19px;
+    }
+
+    .progress-dot {
+        width: 38px;
+        height: 38px;
+    }
+
+    .progress-label {
+        max-width: none;
+        font-size: 13px;
+    }
+
+    .delivery-history {
+        margin-top: 25px;
+        padding: 17px 13px;
+    }
+
+    .delivery-history h3 {
+        font-size: 17px;
+    }
+
+    .history-item {
+        padding: 15px 12px;
+    }
+
+    .steps-section {
+        padding: 48px 5%;
+    }
+
+    .section-heading {
+        margin-bottom: 28px;
+    }
+
+    .section-heading h2 {
+        font-size: 27px;
+    }
+
+    .section-heading p {
+        font-size: 13px;
+    }
+
+    .steps {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    .step {
+        padding: 21px;
+    }
+
+    .help {
+        margin: 0 5% 35px;
+        padding: 26px 17px;
+    }
+
+    .help h2 {
+        font-size: 21px;
+    }
+
+    .help a {
+        max-width: 100%;
+        padding: 13px 15px;
+        font-size: 12px;
+        overflow-wrap: anywhere;
+    }
+
+    footer {
+        padding: 24px 5%;
+        font-size: 11px;
+    }
+}
+
+/* ACCESSIBILITÉ : ANIMATIONS RÉDUITES */
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}
+
+/* BANNIÈRE PREMIUM DUVAL TOMOVA CAR */
+
+.hero {
+    padding: 70px 7% 55px;
+    background:
+        radial-gradient(ellipse at 85% 20%, rgba(75, 130, 210, 0.35), transparent 35%),
+        linear-gradient(120deg, #06152f 0%, #0b3d91 65%, #164982 100%);
+}
+
+.hero-content {
+    max-width: 780px;
+}
+
+.hero .eyebrow {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 5px;
+    color: #e0eaff;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+.hero h2 {
+    margin: 25px 0 16px;
+    font-size: clamp(34px, 5vw, 58px);
+    letter-spacing: -1px;
+}
+
+.hero h2 span {
+    display: block;
+    margin-top: 12px;
+    color: #d6e5ff;
+    font-size: clamp(20px, 2.7vw, 29px);
+    letter-spacing: 0;
+}
+
+.hero .hero-intro {
+    margin: 22px 0 8px;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.hero-content > p:last-child {
+    max-width: 620px;
+    color: #dce7fa;
+    font-size: 14px;
+}
+
+.hero .tracking-form {
+    max-width: 1100px;
+    margin-top: 35px;
+    padding: 26px;
+    border: 1px solid #e0e9f8;
+    border-radius: 16px;
+    box-shadow: 0 20px 45px rgba(0, 10, 35, 0.25);
+}
+
+.tracking-fields {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) auto;
+    align-items: end;
+    gap: 16px;
+}
+
+.tracking-field {
+    min-width: 0;
+}
+
+.tracking-field label {
+    margin-bottom: 8px;
+}
+
+.tracking-field input {
+    width: 100%;
+    min-width: 0;
+    padding: 14px;
+    border: 1px solid #cdd9eb;
+    border-radius: 8px;
+    background: #fbfcff;
+    font-size: 13px;
+}
+
+.tracking-field input:focus {
+    outline: none;
+    border-color: #0b3d91;
+    box-shadow: 0 0 0 3px rgba(11, 61, 145, 0.12);
+}
+
+.tracking-fields button {
+    white-space: nowrap;
+    min-height: 48px;
+}
+
+.hero .tracking-form small {
+    color: #64748b;
+    font-size: 12px;
+}
+
+@media (max-width: 800px) {
+    .hero {
+        padding: 48px 5% 45px;
+    }
+
+    .tracking-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .tracking-fields button {
+        width: 100%;
+        white-space: normal;
+    }
+
+    .hero .tracking-form {
+        padding: 20px 16px;
+    }
+}
+
+/* Image automobile de la bannière */
+.hero {
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(6, 21, 47, 0.95),
+            rgba(11, 61, 145, 0.65)
+        ),
+url("images/logistics-hero.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* AMELIORATION PREMIUM DU FORMULAIRE */
+.hero .tracking-form {
+    background: #ffffff;
+    padding: 28px;
+    border: 1px solid #dbe5f3;
+    border-radius: 16px;
+    box-shadow: 0 20px 45px rgba(0, 10, 35, 0.3);
+}
+
+.hero .tracking-form label {
+    color: #172b4d;
+    font-weight: 700;
+}
+
+.hero .tracking-form input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 14px;
+    border: 1px solid #cbd7e8;
+    border-radius: 8px;
+}
+
+.hero .tracking-form button {
+    background: #0b3d91;
+    color: #ffffff;
+    border-radius: 8px;
+    font-weight: 700;
+    padding: 14px 22px;
+    cursor: pointer;
+}
+
+.hero .tracking-form button:hover {
+    background: #082d6c;
+}
+
+@media (max-width: 800px) {
+    .hero .tracking-form {
+        padding: 18px;
+    }
+}
+
+/* FINITIONS PREMIUM DU FORMULAIRE */
+.hero .tracking-form {
+    transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.hero .tracking-form:hover {
+    box-shadow: 0 24px 55px rgba(0, 10, 35, 0.36);
+}
+
+.hero .tracking-form input {
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hero .tracking-form input:focus {
+    border-color: #0b3d91;
+    box-shadow: 0 0 0 3px rgba(11, 61, 145, 0.12);
+    outline: none;
+}
+
+.hero .tracking-form button {
+    transition: background 0.2s ease, transform 0.2s ease,
+                box-shadow 0.2s ease;
+    box-shadow: 0 5px 12px rgba(11, 61, 145, 0.2);
+}
+
+.hero .tracking-form button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(11, 61, 145, 0.28);
+}
+
+
+
+/* DUVAL TOMOVA CAR LOGISTICS - FINITION PREMIUM */
+
+.delivery-progress {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 12px;
+    margin: 32px 0;
+}
+
+.progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+    padding: 22px 10px;
+    border: 1px solid #e1e8f2;
+    border-radius: 14px;
+    background: #ffffff;
+    text-align: center;
+    box-shadow: 0 5px 18px rgba(12, 35, 75, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.progress-step:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(12, 35, 75, 0.10);
+}
+
+.progress-dot {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    margin: 0;
+    border: 2px solid #d8e2ef;
+    border-radius: 50%;
+    background: #f1f5fb;
+    color: #52647d;
+    font-size: 13px;
+    font-weight: 800;
+    box-shadow: none;
+}
+
+.progress-label {
+    color: #64748b;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.6;
+}
+
+/* Étapes déjà terminées */
+.progress-step.completed .progress-dot {
+    background: #16834f;
+    border-color: #16834f;
+    color: #ffffff;
+}
+
+.progress-step.completed .progress-label {
+    color: #176e49;
+}
+
+/* Étape actuelle */
+.progress-step.current {
+    background: linear-gradient(145deg, #0b3d91, #061b3d);
+    border-color: #0b3d91;
+    box-shadow: 0 10px 26px rgba(11, 61, 145, 0.20);
+}
+
+.progress-step.current .progress-dot {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #0b3d91;
+    box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.15);
+}
+
+.progress-step.current .progress-label {
+    color: #ffffff;
+    font-weight: 800;
+}
+
+/* Adaptation aux écrans plus petits */
+@media (max-width: 900px) {
+    .delivery-progress {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    .delivery-progress {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .progress-step {
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 12px 15px;
+        text-align: left;
+        box-shadow: none;
+    }
+
+    .progress-step:not(:last-child) {
+        border-bottom: none;
+    }
+
+    .progress-dot {
+        flex-shrink: 0;
+    }
+
+    .progress-label {
+        max-width: none;
+        font-size: 13px;
+    }
+}
+/* CARTE INTERACTIVE DU SUIVI */
+.delivery-map {
+    margin-top: 30px;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 12px;
+}
+
+#delivery-map {
+    width: 100%;
+    height: 400px;
+    border-radius: 10px;
+    z-index: 1;
+}
+/* Masquer la carte de livraison */
+.delivery-map {
+    display: none !important;
+}
+/* SÉLECTEUR DE LANGUE PROFESSIONNEL */
+.header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.language-label {
+    font-size: 22px;
+    cursor: pointer;
+}
+
+#language-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #ffffff;
+    color: #0b3d91;
+    border: 1px solid #0b3d91;
+    border-radius: 8px;
+    padding: 11px 35px 11px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+#language-select:hover {
+    background-color: #0b3d91;
+    color: #ffffff;
+    box-shadow: 0 3px 10px rgba(11, 61, 145, 0.2);
+}
+
+#language-select:focus {
+    box-shadow: 0 0 0 3px rgba(11, 61, 145, 0.15);
+}
+
+#language-select option {
+    background: #ffffff;
+    color: #0b3d91;
+    padding: 10px;
+}
+/* =========================================
+   DUVAL TOMOVA CAR LOGISTICS
+   IDENTITÉ PREMIUM : BLEU NUIT & OR
+========================================= */
+
+:root {
+    --blue: #101D32;
+    --blue-dark: #0A1424;
+    --blue-light: #F2EEE5;
+    --gold: #C6A15B;
+    --light: #F4F5F7;
+    --text: #202B3C;
+    --muted: #697586;
+    --white: #FFFFFF;
+    --border: #E2D9C9;
+    --shadow: 0 12px 35px rgba(10, 20, 36, 0.09);
+}
+
+/* EN-TÊTE */
+.header {
+    background: linear-gradient(120deg, #0A1424, #172943);
+    border-bottom: 2px solid #C6A15B;
+}
+
+/* LOGO */
+.brand-icon {
+    border-color: rgba(198, 161, 91, 0.65);
+    color: #C6A15B;
+}
+
+/* BANDEAU PRINCIPAL */
+.hero {
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(10, 20, 36, 0.96),
+            rgba(16, 29, 50, 0.78)
+        ),
+        url("images/logistics-hero.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* PETITS TITRES */
+.eyebrow,
+.hero .eyebrow {
+    color: #D8BB82;
+}
+
+/* FORMULAIRE */
+.tracking-form {
+    border-top: 3px solid #C6A15B;
+}
+
+/* BOUTONS */
+button,
+.hero .tracking-form button {
+    color: #101D32;
+    background: linear-gradient(135deg, #D8BB82, #B58D49);
+    border: 1px solid #C6A15B;
+    box-shadow: 0 6px 16px rgba(10, 20, 36, 0.15);
+}
+
+button:hover,
+.hero .tracking-form button:hover {
+    color: #FFFFFF;
+    background: #101D32;
+    border-color: #C6A15B;
+}
+
+/* CHAMPS DE SAISIE */
+.search-row input:focus,
+.tracking-field input:focus,
+.hero .tracking-form input:focus {
+    border-color: #C6A15B;
+    box-shadow: 0 0 0 3px rgba(198, 161, 91, 0.18);
+}
+
+/* TITRES DES SECTIONS */
+.tracking-result h3,
+.delivery-history h3,
+.section-heading h2,
+.step h3,
+.help h2 {
+    color: #101D32;
+}
+
+/* ÉTAPES DE LIVRAISON */
+.progress-step.current {
+    background: linear-gradient(145deg, #172943, #0A1424);
+    border-color: #C6A15B;
+}
+
+.progress-step.current .progress-dot {
+    color: #101D32;
+    background: #D8BB82;
+    border-color: #D8BB82;
+}
+
+.progress-step.completed .progress-dot {
+    background: #16866A;
+    border-color: #16866A;
+}
+
+/* CARTES DES ÉTAPES */
+.step-icon {
+    color: #A9823F;
+    background: #F2EEE5;
+    border-color: #E4D4B5;
+}
+
+/* ASSISTANCE */
+.help {
+    border-top: 3px solid #C6A15B;
+}
+
+/* SÉLECTEUR DE LANGUE */
+#language-select {
+    color: #101D32;
+    border-color: #C6A15B;
+}
+
+#language-select:hover {
+    color: #FFFFFF;
+    background: #101D32;
+    border-color: #C6A15B;
+}
+
+/* PIED DE PAGE */
+footer {
+    color: #E7EAF0;
+    background: linear-gradient(120deg, #0A1424, #172943);
+    border-top: 2px solid #C6A15B;
+}
+
+/* LIENS */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible {
+    outline-color: #C6A15B;
+}
+/* FINITIONS ÉLÉGANTES DES CARTES */
+
+.step,
+.delivery-history,
+.history-item,
+.delivery-map {
+    border: 1px solid #E2D9C9;
+    border-radius: 14px;
+    box-shadow: 0 8px 24px rgba(10, 20, 36, 0.06);
+}
+
+.step {
+    border-top: 3px solid #C6A15B;
+}
+
+.history-item {
+    border-left: 4px solid #C6A15B;
+}
+
+.step:hover,
+.history-item:hover {
+    box-shadow: 0 12px 28px rgba(10, 20, 36, 0.12);
+}
+/* FORMULAIRE DE SUIVI — FINITION HAUT DE GAMME */
+
+.hero .tracking-form {
+    padding: 32px;
+    border: 1px solid #D8BB82;
+    border-top: 4px solid #C6A15B;
+    border-radius: 18px;
+    background: #FFFFFF;
+    box-shadow: 0 22px 50px rgba(10, 20, 36, 0.22);
+}
+
+.tracking-fields {
+    gap: 20px;
+}
+
+.tracking-field label {
+    display: block;
+    margin-bottom: 10px;
+    color: #101D32;
+    font-size: 13px;
+    font-weight: 750;
+}
+
+.tracking-field input {
+    min-height: 50px;
+    padding: 14px 16px;
+    border: 1px solid #D9DDE4;
+    border-radius: 10px;
+    background: #F8F9FB;
+    color: #202B3C;
+}
+
+.tracking-field input:focus {
+    border-color: #C6A15B;
+    background: #FFFFFF;
+    box-shadow: 0 0 0 3px rgba(198, 161, 91, 0.15);
+}
+
+.hero .tracking-form button {
+    min-height: 50px;
+    padding: 14px 24px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #D8BB82, #B58D49);
+    color: #101D32;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    transition: all 0.25s ease;
+}
+
+.hero .tracking-form button:hover {
+    background: #101D32;
+    color: #FFFFFF;
+    border-color: #C6A15B;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 800px) {
+    .hero .tracking-form {
+        padding: 20px 16px;
+    }
+
+    .tracking-fields {
+        gap: 14px;
+    }
+}
+/* ÉTAPES DE LIVRAISON — FINITION PREMIUM */
+.delivery-progress {
+    gap: 14px;
+}
+
+.progress-step {
+    padding: 20px 12px;
+    border: 1px solid #E2D9C9;
+    border-radius: 14px;
+    background: #FFFFFF;
+    box-shadow: 0 6px 18px rgba(10, 20, 36, 0.06);
+}
+
+.progress-step.completed {
+    border-color: #B8D8CA;
+    background: #F7FBF9;
+}
+
+.progress-step.completed .progress-dot {
+    background: #16866A;
+    border-color: #16866A;
+}
+
+.progress-step.current {
+    border: 1px solid #C6A15B;
+    background: linear-gradient(145deg, #172943, #0A1424);
+    box-shadow: 0 10px 24px rgba(10, 20, 36, 0.16);
+}
+
+.progress-step.current .progress-label {
+    color: #FFFFFF;
+}
+
+.progress-step:not(.completed):not(.current) .progress-dot {
+    background: #F2EEE5;
+    border-color: #D8BB82;
+    color: #101D32;
+}
+
+@media (max-width: 600px) {
+    .progress-step {
+        padding: 12px 15px;
+    }
+}
+/* HISTORIQUE DE LIVRAISON — STYLE PREMIUM */
+.delivery-history {
+    padding: 28px;
+    border: 1px solid #E2D9C9;
+    border-top: 3px solid #C6A15B;
+    border-radius: 16px;
+    background: #FFFFFF;
+    box-shadow: 0 10px 30px rgba(10, 20, 36, 0.07);
+}
+
+.delivery-history h3 {
+    margin-bottom: 22px;
+    color: #101D32;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+.history-item {
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    border-left: 4px solid #C6A15B;
+    border-radius: 10px;
+    background: #F8F9FB;
+    transition: all 0.25s ease;
+}
+
+.history-item:hover {
+    background: #F2EEE5;
+    transform: translateX(3px);
+}
+
+@media (max-width: 600px) {
+    .delivery-history {
+        padding: 20px 15px;
+    }
+}
+/* SECTION AIDE — FINITION PREMIUM */
+.help {
+    padding: 35px 28px;
+    border: 1px solid #E2D9C9;
+    border-top: 4px solid #C6A15B;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #FFFFFF, #F7F8FA);
+    box-shadow: 0 12px 30px rgba(10, 20, 36, 0.08);
+    text-align: center;
+}
+
+.help h2 {
+    margin-bottom: 12px;
+    color: #101D32;
+    font-size: 25px;
+    font-weight: 800;
+}
+
+.help p {
+    color: #697586;
+    line-height: 1.7;
+}
+
+.help a {
+    color: #A9823F;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.help a:hover {
+    color: #101D32;
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .help {
+        padding: 25px 16px;
+    }
+
+    .help h2 {
+        font-size: 21px;
+    }
+}/* CONTACT WHATSAPP — MEILLEURE LISIBILITÉ */
+.help a {
+    display: inline-block;
+    color: #FFFFFF !important;
+    background: #16866A;
+    padding: 12px 22px;
+    border: 1px solid #16866A;
+    border-radius: 9px;
+    font-weight: 800;
+    text-decoration: none;
+    transition: all 0.25s ease;
+}
+
+.help a:hover {
+    color: #FFFFFF !important;
+    background: #0F654F;
+    border-color: #0F654F;
+    text-decoration: none;
+}
+/* PIED DE PAGE — FINITION PREMIUM */
+footer {
+    padding: 35px 20px;
+    color: #E7EAF0;
+    background: linear-gradient(135deg, #0A1424, #172943);
+    border-top: 3px solid #C6A15B;
+    text-align: center;
+}
+
+footer p {
+    margin: 8px 0;
+    color: #D5DCE7;
+    line-height: 1.7;
+}
+
+footer a {
+    color: #D8BB82;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+footer a:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+/* ADAPTATION MOBILE — DUVAL TOMOVA CAR LOGISTICS */
+@media (max-width: 600px) {
+    .hero {
+        padding: 45px 16px;
+        background-position: center;
+    }
+
+    .hero h1 {
+        font-size: 27px;
+        line-height: 1.25;
+    }
+
+    .hero .tracking-form {
+        width: 100%;
+        padding: 20px 15px;
+        border-radius: 14px;
+    }
+
+    .tracking-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .hero .tracking-form button {
+        width: 100%;
+    }
+
+    .section-heading h2 {
+        font-size: 23px;
+    }
+}
+/* CORRECTION DU CENTRAGE SUR TÉLÉPHONE */
+@media (max-width: 600px) {
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
+    .container,
+    main,
+    section {
+        max-width: 100%;
+    }
+
+    .container {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero,
+    .help,
+    .delivery-history {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+/* EN-TÊTE MOBILE — ALIGNEMENT PREMIUM */
+@media (max-width: 600px) {
+    .header {
+        width: 100%;
+        padding: 14px 12px;
+    }
+
+    .header .container {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        max-width: 100%;
+        text-align: left;
+    }
+
+    .brand h1,
+    .brand h2 {
+        margin: 0;
+        font-size: 18px;
+        line-height: 1.25;
+    }
+
+    #language-select {
+        max-width: 100%;
+        margin: 4px auto 0;
+    }
+}
