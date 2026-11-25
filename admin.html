@@ -347,6 +347,50 @@
         }
     );
 
+document.getElementById("resetCodeForm").addEventListener(
+    "submit",
+    async (event) => {
+        event.preventDefault();
+
+        const tracking_number =
+            document.getElementById("resetTracking").value.trim();
+
+        const access_code =
+            document.getElementById("newAccessCode").value;
+
+        showMessage("Réinitialisation du code en cours...");
+
+        const { data, error } = await supabase.functions.invoke(
+            "reset-delivery-code",
+            {
+                body: {
+                    tracking_number,
+                    access_code
+                }
+            }
+        );
+
+        if (error) {
+            showMessage("Impossible de réinitialiser le code. Vérifie la connexion.");
+            console.error("Erreur de réinitialisation :", error);
+            return;
+        }
+
+        if (data?.error || !data?.success) {
+            showMessage(data?.error || "La réinitialisation a échoué.");
+            return;
+        }
+
+        showMessage(
+            "Code personnel réinitialisé avec succès ! " +
+            "Numéro de suivi : " + data.tracking_number +
+            " | Nouveau code personnel : " + access_code +
+            " — Communique ce nouveau code au client."
+        );
+
+        document.getElementById("resetCodeForm").reset();
+    }
+);
     
 document.getElementById("statusForm").addEventListener("submit", async (event) => {
     event.preventDefault();
