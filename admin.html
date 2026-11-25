@@ -161,6 +161,37 @@
 
 <hr>
 
+<h2>Réinitialiser le code personnel d’un client</h2>
+
+<p class="note">
+    Cette opération remplace uniquement le code personnel.
+    Les informations et le suivi de la livraison restent inchangés.
+</p>
+
+<form id="resetCodeForm">
+    <label for="resetTracking">Numéro de suivi du client</label>
+    <input
+        id="resetTracking"
+        required
+        placeholder="Ex. DTC-2026-001"
+    >
+
+    <label for="newAccessCode">Nouveau code personnel</label>
+    <input
+        id="newAccessCode"
+        type="password"
+        required
+        minlength="8"
+        maxlength="128"
+        autocomplete="new-password"
+        placeholder="Au moins 8 caractères"
+    >
+
+    <button type="submit">Réinitialiser le code personnel</button>
+</form>
+
+<hr>
+
 <h2>Mettre à jour le suivi d’une livraison</h2>
 
 <form id="statusForm">
@@ -306,9 +337,11 @@
             }
 
             showMessage(
-                "Livraison créée. Numéro de suivi : " +
-                data.delivery.tracking_number
-            );
+    "Livraison créée avec succès ! " +
+    "Numéro de suivi : " + data.delivery.tracking_number +
+    " | Code personnel : " + body.access_code +
+    " — Communique ces deux informations au client."
+);
 
             document.getElementById("deliveryForm").reset();
         }
